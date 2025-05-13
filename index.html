@@ -1,61 +1,55 @@
 <!DOCTYPE html>
-<html lang="ca">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebQueNoEsDeEnto</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #005eb8;
-      color: white;
-    }
-
-    nav {
-      background-color: #003d80;
-      color: white;
-      padding: 10px 20px;
-    }
-
-    .container {
-      display: flex;
-      padding: 20px;
-    }
-
-  </style>
+<h1>InGameShop</h1>
 </head>
+<style>
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar li a:hover:not(.active) {
+  background-color: #111;
+}
+body {
+    color: black;
+    font-size: 2rem;
+    margin: 5%;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+ul {
+    list-style-type: upper-roman;
+    line-height: 2rem;
+}
+</style>
 <body>
-  <header>
-    <div><strong>CreepyFeets</strong></div>
-    <div>
-      <input type="text" placeholder="Cerca productes..." height="10px"/>
-      <button>Cerca</button>
-    </div>
-  </header>
-
-  <nav>
-    <p>Ofertes | Items | Armes | Miscelànea | Merch</p>
-  </nav>
-
-  <div class="container">
-    <aside>
-      
-    </aside>
-  </div>
-
+  <ul class="navbar">
+    <li><a class="active" href="index.html">index</a></li>
+    <li><a href="ex4.html">4</a></li>
+    <li><a href="ex5.html">5</a></li>
+    <li><a href="ex6.html">6</a></li>
+  </ul>
 </body>
 </html>
