@@ -1,0 +1,40 @@
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar li a:hover:not(.active) {
+  background-color: #111;
+}
+body {
+    color: black;
+    font-size: 2rem;
+    margin: 5%;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+ul {
+    list-style-type: upper-roman;
+    line-height: 2rem;
+}
