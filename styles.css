@@ -1,3 +1,5 @@
+
+/*estil de la navbar*/
 ul.navbar {
   list-style-type: none;
   margin: 0;
@@ -37,4 +39,9 @@ body {
 ul {
     list-style-type: upper-roman;
     line-height: 2rem;
+}
+/*estil de la table a directori*/
+table, th, td {
+  border: 1px solid black;
+    border-collapse: collapse;
 }
