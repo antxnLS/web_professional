@@ -4,44 +4,30 @@
     <ul class="navbar">
     <li><a href="index.html">Home</a></li> <!--Benvinguda, destacats, promocions-->
     <li><a class="active" href="directori.html">Directori</a></li> <!--Llista de tots els productes amb busqueda-->
-    <li><a href="about.html">About</a></li> <!--About us!!!!-->
+    <li><a href="about.html">About</a></li> <!--About us!-->
     <li><a href="contact.html">Contact</a></li> <!--Contacta amb nosaltres-->
   </ul>
 </head>
-<script>
-  fetch('vorhees.js')
-    .then(res=>res.json())
-    .then(jocs=>{ const container=document.getElementById('llistaJocs');
-      jocs.forEach(joc=> {const bloc=document.createElement('div');
-        bloc.className='joc';
-        bloc.innerHTML=`<h2>${joc.titol}</h2>
-        <img src="${joc.imatge}" alt="${joc.titol}</p>
-        <p>${joc.descripcio}</p>
-        `;
-        container.appendChild(bloc);
-      });
-    })
-    .catch(error=>console.error('Error carregant jocs:', error));
-</script>
+
 <body>
   <h1>InGameShop</h1>
-  <div>
+  <div class="catalogue" id="catalogue"></div>
+<script src="vorhees.js"></script>
+<script>
+  const catalogueEl = document.getElementById("catalogue");
 
-  </div>
-
-  
-  <table>
-    <tr>
-    <th>a. Elden Ring</th>
-    <th>b. Team Fortress 2</th>
-    <th>c. Dota 2</th>
-    <th>d. Old School RuneScape</th>
-    <th>e. Diablo 4</th>
-    <th>f. Counter Strike Global Offensive 2</th>
-    <th>g. World of Warcraft</th>
-    <th>h. Escape from Tarkov</th>
-    </tr>
-    
-  </table>
+  vorheesData.forEach(game => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${game.imatge}" alt="${game.titol}" class="product-img">
+      <div class="title">${game.titol}</div>
+      <div class="items">${game.items}</div>
+      <div class="description">${game.descripcio || 'No description available.'}</div>
+      <a href="#" class="button">View Items</a>
+    `;
+    catalogueEl.appendChild(card);
+  });
+</script>
 </body>
 </html>
