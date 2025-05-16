@@ -8,12 +8,27 @@
     <li><a href="contact.html">Contact</a></li> <!--Contacta amb nosaltres-->
   </ul>
 </head>
+<script>
+  fetch('vorhees.js')
+    .then(res=>res.json())
+    .then(jocs=>{ const container=document.getElementById('llistaJocs');
+      jocs.forEach(joc=> {const bloc=document.createElement('div');
+        bloc.className='joc';
+        bloc.innerHTML=`<h2>${joc.titol}</h2>
+        <img src="${joc.imatge}" alt="${joc.titol}</p>
+        <p>${joc.descripcio}</p>
+        `;
+        container.appendChild(bloc);
+      });
+    })
+    .catch(error=>console.error('Error carregant jocs:', error));
+</script>
 <body>
   <h1>InGameShop</h1>
   <div>
 
-
   </div>
+
   
   <table>
     <tr>
@@ -27,9 +42,6 @@
     <th>h. Escape from Tarkov</th>
     </tr>
     
-    <tr>
-
-    </tr>
   </table>
 </body>
 </html>
