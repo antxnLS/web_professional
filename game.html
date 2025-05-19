@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <title>Detalls del Joc</title>
+</head>
+<body>
+  <h1>Detalls del Joc</h1>
+  <div id="game-details"></div>
+
+  <script src="vorhees.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get("id"); // Ja és string
+
+    const game = vorheesData.find(g => g.id === gameId);
+
+    const container = document.getElementById("game-details");
+
+    if (game) {
+      container.innerHTML = `
+        <h2>${game.titol}</h2>
+        <img src="${game.imatge}" alt="${game.titol}" class="product-img">
+        <p><strong>Items:</strong> ${game.items}</p>
+        <p>${game.descripcio}</p>
+        <a href="directori.html">← Tornar al Directori</a>
+      `;
+    } else {
+      container.innerHTML = `<p>No s'ha trobat cap joc amb aquest ID.</p>`;
+    }
+  </script>
+</body>
+</html>

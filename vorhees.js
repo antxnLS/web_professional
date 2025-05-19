@@ -3,7 +3,7 @@ const vorheesData = [
       "id": "1",
       "titol": "Elden Ring",
       "items": "372 items",
-      "descripcio": "",
+      "descripcio": "Descripcio elden ring",
       "imatge": "img/eldenring.jpg"
     },
     {
