@@ -12,9 +12,35 @@
 </head>
 <body>
   <h1>InGameShop</h1>
-  <p>Benvinguts
-    <br>destacats
-    <br>Promocions
-  </p>
+  <p>Carrousel</p> <!--Busques feina? -20% en items, paga on puguis, troba un bolso car-->
+  <div class="carrusel">
+    <div class="slides" id="slides">
+      <img src="" class="slide">
+      <img src="" class="slide">
+      <img src="" class="slide">
+    </div>
+    <div class="botons">
+      <button onclick="canviarSlide(-1)">❮</button>
+      <button onclick="canviarSlide(1)">❯</button>
+    </div>
+  </div>
+    <script>
+      let index = 0;
+      function canviarSlide(direccio) {
+        const slides = document.getElementById('slides');
+        const slideWidth = document.querySelector('.slide').clientWidth;
+        const totalSlides = slides.children.length;
+        index = (index + direccio + totalSlides) % totalSlides;
+        slides.style.transform = `translateX(-${index * slideWidth}px)`;}
+
+window.addEventListener('resize', () => {
+  canviarSlide(0); // recalcula quan es redimensiona la finestra
+});
+    </script>
+
+
+  <p>El més venut</p>
+  
+  <p>El millor</p>
 </body>
 </html>
