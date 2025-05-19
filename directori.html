@@ -25,7 +25,7 @@
       <div class="title">${game.titol}</div>
       <div class="items">${game.items}</div>
       <div class="description">${game.descripcio || 'No description available.'}</div>
-      <a href="#" class="button">View Items</a>
+      <a href="game.html?id=${game.id}" class="button">View Items</a>
     `;
     catalogueEl.appendChild(card);
   });
