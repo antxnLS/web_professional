@@ -4,7 +4,24 @@ const vorheesData = [
       "titol": "Elden Ring",
       "items": "372 items",
       "descripcio": "Descripcio elden ring",
-      "imatge": "img/eldenring.jpg"
+      "imatge": "img/eldenring.jpg",
+      productes: [
+        {
+          nom: "Espasa de la Llum",
+          imatge: "img/items/espasa.jpg",
+          descripcio: "Una espasa llegendària amb poder sagrat."
+        },
+        {
+          nom: "Escut Drac",
+          imatge: "img/items/escut.jpg",
+          descripcio: "Escut forjat amb escates de drac ancestral."
+        },
+        {
+          nom: "Amulet de Vida",
+          imatge: "img/items/amulet.jpg",
+          descripcio: "Incrementa la vitalitat del portador."
+        }
+      ]
     },
     {
       "id": "2",
@@ -54,6 +71,13 @@ const vorheesData = [
       "items": "1800+ items",
       "descripcio": "",
       "imatge": "img/tarkov.png"
+    },
+    {
+      "id": "9",
+      "titol": "Fortnite",
+      "items": "7800+ items",
+      "descripcio": "",
+      "imatge": "img/fortnite.png"
     }
   ];
   

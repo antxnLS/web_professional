@@ -5,28 +5,47 @@
   <title>Detalls del Joc</title>
 </head>
 <body>
-  <h1>Detalls del Joc</h1>
-  <div id="game-details"></div>
+  <h1 id="game-title">Detalls del Joc</h1>
+  <div class="content" id="game-info"></div>
+  <h2 style="text-align:center;">Ítems disponibles</h2>
+  <div class="catalogue" id="item-list"></div>
 
   <script src="vorhees.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
-    const gameId = params.get("id"); // Ja és string
-
+    const gameId = params.get("id");
     const game = vorheesData.find(g => g.id === gameId);
 
-    const container = document.getElementById("game-details");
+    const infoEl = document.getElementById("game-info");
+    const itemsEl = document.getElementById("item-list");
+    const titleEl = document.getElementById("game-title");
 
     if (game) {
-      container.innerHTML = `
-        <h2>${game.titol}</h2>
+      titleEl.textContent = game.titol;
+      infoEl.innerHTML = `
         <img src="${game.imatge}" alt="${game.titol}" class="product-img">
-        <p><strong>Items:</strong> ${game.items}</p>
-        <p>${game.descripcio}</p>
-        <a href="directori.html">← Tornar al Directori</a>
+        <div class="title">${game.titol}</div>
+        <div class="items">${game.items}</div>
+        <div class="description">${game.descripcio}</div>
+        <a href="directori.html" class="button">← Tornar al Directori</a>
       `;
+
+      if (game.productes && game.productes.length > 0) {
+        game.productes.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <img src="${item.imatge}" alt="${item.nom}" class="product-img">
+            <div class="title">${item.nom}</div>
+            <div class="description">${item.descripcio}</div>
+          `;
+          itemsEl.appendChild(card);
+        });
+      } else {
+        itemsEl.innerHTML = "<p style='text-align:center;'>Aquest joc no té ítems disponibles.</p>";
+      }
     } else {
-      container.innerHTML = `<p>No s'ha trobat cap joc amb aquest ID.</p>`;
+      infoEl.innerHTML = `<p>No s'ha trobat cap joc amb aquest ID.</p>`;
     }
   </script>
 </body>
