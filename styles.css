@@ -40,6 +40,21 @@ ul {
     list-style-type: upper-roman;
     line-height: 2rem;
 }
+
+.navbar li {
+  display: flex;
+  align-items: center;
+  height: 100px; /* igual que la imagen */
+}
+
+.navbar li img {
+  display: block;
+  height: 100px;
+  width: 100px;
+  object-fit: contain; /* opcional */
+  margin: auto 0; /* centrado vertical */
+}
+
 /*estil de la table a directori*/
 table, th, td {
   border: 1px solid black;
