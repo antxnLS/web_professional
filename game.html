@@ -8,7 +8,7 @@
   <h1 id="game-title">Detalls del Joc</h1>
   <div class="content" id="game-info"></div>
   <h2 style="text-align:center;">Ítems disponibles</h2>
-  <div class="catalogue" id="item-list"></div>
+  <div id="categories-container"></div>
 
   <script src="vorhees.js"></script>
   <script>
@@ -17,7 +17,7 @@
     const game = vorheesData.find(g => g.id === gameId);
 
     const infoEl = document.getElementById("game-info");
-    const itemsEl = document.getElementById("item-list");
+    const categoriesContainer = document.getElementById("categories-container");
     const titleEl = document.getElementById("game-title");
 
     if (game) {
@@ -31,18 +31,42 @@
       `;
 
       if (game.productes && game.productes.length > 0) {
+        // Agrupar productos por categoría
+        const grouped = {};
         game.productes.forEach(item => {
-          const card = document.createElement("div");
-          card.className = "card";
-          card.innerHTML = `
-            <img src="${item.imatge}" alt="${item.nom}" class="product-img">
-            <div class="title">${item.nom}</div>
-            <div class="description">${item.descripcio}</div>
-          `;
-          itemsEl.appendChild(card);
+          if (!grouped[item.categoria]) grouped[item.categoria] = [];
+          grouped[item.categoria].push(item);
         });
+
+        for (const categoria in grouped) {
+          const section = document.createElement("div");
+          section.className = "carousel-container";
+
+          const title = document.createElement("div");
+          title.className = "carousel-title";
+          title.textContent = categoria;
+
+          const carousel = document.createElement("div");
+          carousel.className = "carousel";
+
+          grouped[categoria].forEach(item => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+              <img src="${item.imatge}" alt="${item.nom}">
+              <div class="title">${item.nom}</div>
+              <div class="description">${item.descripcio}</div>
+            `;
+            carousel.appendChild(card);
+          });
+
+          section.appendChild(title);
+          section.appendChild(carousel);
+          categoriesContainer.appendChild(section);
+        }
+
       } else {
-        itemsEl.innerHTML = "<p style='text-align:center;'>Aquest joc no té ítems disponibles.</p>";
+        categoriesContainer.innerHTML = "<p style='text-align:center;'>Aquest joc no té ítems disponibles.</p>";
       }
     } else {
       infoEl.innerHTML = `<p>No s'ha trobat cap joc amb aquest ID.</p>`;
