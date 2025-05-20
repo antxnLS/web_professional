@@ -9,17 +9,20 @@ const vorheesData = [
         {
           nom: "Espasa de la Llum",
           imatge: "img/items/espasa.jpg",
-          descripcio: "Una espasa llegendària amb poder sagrat."
+          descripcio: "Una espasa llegendària amb poder sagrat.",
+          categoria: "Armes"
         },
         {
           nom: "Escut Drac",
           imatge: "img/items/escut.jpg",
-          descripcio: "Escut forjat amb escates de drac ancestral."
+          descripcio: "Escut forjat amb escates de drac ancestral.",
+          categoria: "Escut"
         },
         {
           nom: "Amulet de Vida",
           imatge: "img/items/amulet.jpg",
-          descripcio: "Incrementa la vitalitat del portador."
+          descripcio: "Incrementa la vitalitat del portador.",
+          categoria: "Talisman"
         }
       ]
     },
