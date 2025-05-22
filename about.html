@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <link rel="stylesheet" href="styles.css">
     <ul class="navbar">
@@ -8,10 +9,31 @@
     <li><a class="active" href="about.html">About</a></li> <!--About us-->
     <li><a href="contact.html">Contact</a></li> <!--Contacta amb nosaltres-->
   </ul>
+  <meta charset="UTF-8">
+  <title>Contacta amb Nosaltres</title>
 </head>
 <body>
-  <p class="content">
-    Benvingut a InGameShop! Som un marketplace ràpid i segur dedicat a vendre ítems per jocs en línia
-  </p>
+  <div class="container">
+    <div class="contact-info">
+      <h2>Contacta amb Nosaltres</h2>
+      <p>No dubteu a utilitzar el formulari o enviar-nos un correu electrònic. Les trucades a l'antiga també funcionen.</p>
+      <div><i>📞</i> 012345678</div>
+      <div><i>✉️</i> info@freediddy.com</div>
+      <div><i>📍</i>15 934 Fremont Ave.<br>New Baltimore, MI 48047</div>
+    </div>
+    
+    <div class="form">
+      <form action="#" method="POST">
+        <div class="form-row">
+          <input type="text" name="first_name" placeholder="Nom" required>
+          <input type="text" name="last_name" placeholder="Cognom" required>
+        </div>
+        <input type="email" name="email" placeholder="exemple@gmail.com" required>
+        <input type="tel" name="phone" placeholder="xxx-xxx-xxxx">
+        <textarea name="message" placeholder="Escriu el missatge ..." rows="5" required></textarea>
+        <button type="Enviar">Submit</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
