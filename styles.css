@@ -200,6 +200,61 @@ h1 {
   border-radius: 5px;
 }
 
+.container {
+  display: flex;
+  padding: 40px;
+  justify-content: center;
+  gap: 60px;
+}
+.contact-info {
+  max-width: 400px;
+}
+.contact-info h2 {
+  font-size: 28px;
+}
+.contact-info p {
+  margin-bottom: 20px;
+}
+.contact-info div {
+  margin-bottom: 15px;
+}
+.contact-info i {
+  color: orange;
+  margin-right: 10px;
+}
+.form {
+  flex: 1;
+  max-width: 500px;
+}
+.form input, .form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+.form-row input {
+  flex: 1;
+}
+.form button {
+  background-color: #ff5c1a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.form button:hover {
+  background-color: #e64a00;
+}
+
+
 /* Carusel*/
 .carrusel {
   overflow: hidden;
