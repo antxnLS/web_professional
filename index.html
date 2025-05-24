@@ -76,7 +76,7 @@
           <div class="items">${item.categoria}</div>
           <div class="description">${item.joc}</div>
           <div class="price">${item.preu} €</div>
-          <a href="#" class="button">Veure més</a>
+          <a href="item.html?item=${encodeURIComponent(item.nom)}" class="button">Veure més</a>
         `;
         container.appendChild(card);
       });

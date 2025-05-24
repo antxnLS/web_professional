@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalls de l'Ítem</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <ul class="navbar">
+    <li><img src="img/logo.png" height="100" width="100"/></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="directori.html">Directori</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div id="item-detalls" class="item-container"></div>
+
+  <script src="vorhees.js"></script>
+  <script>
+    function obtenirParametreURL(nom) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(nom);
+    }
+
+    const nomItem = obtenirParametreURL("item");
+    const itemTrobat = (() => {
+      for (const joc of vorheesData) {
+        for (const item of joc.productes) {
+          if (item.nom === nomItem) {
+            return { ...item, joc: joc.titol, JocId: joc.id };
+          }
+        }
+      }
+      return null;
+    })();
+
+    const container = document.getElementById("item-detalls");
+
+    if (itemTrobat) {
+      container.innerHTML = `
+        <h1>${itemTrobat.nom}</h1>
+        <img src="${itemTrobat.imatge}" alt="${itemTrobat.nom}" class="item-image"/>
+        <p><strong>Categoria:</strong> ${itemTrobat.categoria}</p>
+        <p><strong>Preu:</strong> ${itemTrobat.preu} €</p>
+        <p><strong>Joc:</strong> ${itemTrobat.joc}</p>
+        <a href="game.html?id=${itemTrobat.JocId}" class="button">Veure joc</a>
+      `;
+    } else {
+      container.innerHTML = `<p>Ítem no trobat.</p>`;
+    }
+  </script>
+</body>
+</html>

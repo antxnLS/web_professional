@@ -56,6 +56,7 @@
               <img src="${item.imatge}" alt="${item.nom}">
               <div class="title">${item.nom}</div>
               <div class="price">${item.preu} €</div>
+              <a href="item.html?item=${encodeURIComponent(item.nom)}" class="button small">Veure més</a>
             `;
             carousel.appendChild(card);
           });
