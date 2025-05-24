@@ -3,7 +3,7 @@ const vorheesData = [
     id: "1",
     titol: "Elden Ring",
     items: "372 items",
-    descripcio: "Descripcio elden ring",
+    descripcio: "Explora un món fosc i èpic ple de perills, màgia i combat exigent en aquest RPG d'acció de FromSoftware.",
     imatge: "img/imatges jocs/eldenring.jpg",
     productes: [
       {
@@ -36,7 +36,7 @@ const vorheesData = [
     id: "2",
     titol: "Team Fortress 2",
     items: "3000+ items",
-    descripcio: "",
+    descripcio: "Un clàssic multijugador ple d'humor, acció i una gran varietat d'objectes cosmètics i armes úniques.",
     imatge: "img/imatges jocs/teamfortress.png",
     productes: [
       {
@@ -69,7 +69,7 @@ const vorheesData = [
     id: "3",
     titol: "Dota2",
     items: "208 items",
-    descripcio: "",
+    descripcio: "El MOBA competitiu per excel·lència amb herois llegendaris, estratègia profunda i objectes poderosos.",
     imatge: "img/imatges jocs/dota2.jpg",
     productes:[
       {
@@ -102,7 +102,7 @@ const vorheesData = [
     id: "4",
     titol: "RuneScape",
     items: "39000+ items",
-    descripcio: "",
+    descripcio: "Un MMORPG llegendari amb un món immens, milers d’ítems i llibertat total per crear la teva pròpia aventura.",
     imatge: "img/imatges jocs/runescape.jpg",
     productes:[
       {
@@ -135,7 +135,7 @@ const vorheesData = [
     id: "5",
     titol: "Diablo 4",
     items: "300+ items",
-    descripcio: "",
+    descripcio: "Destrueix dimonis i col·lecciona botí llegendari en un món fosc i visceral d'acció i rol.",
     imatge: "img/imatges jocs/d4.jpg",
     productes:[
       {
@@ -168,7 +168,7 @@ const vorheesData = [
     id: "6",
     titol: "CSGO2",
     items: "11130+ items",
-    descripcio: "",
+    descripcio: "L’experiència de tir tàctic definitiva, amb armes personalitzables i una economia de mercat vibrant.",
     imatge: "img/imatges jocs/csgo2.jpg",
     productes: [
       {
@@ -201,7 +201,7 @@ const vorheesData = [
     id: "7",
     titol: "World of Warcraft",
     items: "65893+ items",
-    descripcio: "",
+    descripcio: "L'univers d'MMO més icònic, ple de missions èpiques, faccions en guerra i un vast catàleg d’objectes.",
     imatge: "img/imatges jocs/wow.png",
     productes: [
       {
@@ -234,7 +234,7 @@ const vorheesData = [
     id: "8",
     titol: "Escape from Tarkov",
     items: "1800+ items",
-    descripcio: "",
+    descripcio: "Un shooter de supervivència realista on cada objecte pot marcar la diferència entre escapar o morir.",
     imatge: "img/imatges jocs/tarkov.png",
     productes: [
       {
@@ -267,7 +267,7 @@ const vorheesData = [
     id: "9",
     titol: "Fortnite",
     items: "7800+ items",
-    descripcio: "",
+    descripcio: "Lluita, construeix i personalitza’t amb milers de cosmètics en el battle royale més popular del món.",
     imatge: "img/imatges jocs/fortnite.png",
     productes: [
       {

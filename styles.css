@@ -106,13 +106,8 @@ h1 {
   margin: 10px 0 5px;
 }
 
-.items {
-  color: #0073e6;
-  font-weight: bold;
-}
-
 .description {
-  font-size: 0.9rem;
+  font-size: 0.4rem;
   color: #555;
   margin: 10px 0;
   flex-grow: 1;
@@ -182,7 +177,7 @@ h1 {
 }
 
 .card .description {
-  font-size: 0.9em;
+  font-size: 0.4em;
   color: #666;
 }
 
@@ -335,13 +330,7 @@ h1 {
 .items {
   color: #0073e6;
   font-weight: bold;
-}
-
-.description {
-  font-size: 0.9rem;
-  color: #555;
-  margin: 10px 0;
-  flex-grow: 1;
+  font-size: 31px;
 }
 
 .button {
