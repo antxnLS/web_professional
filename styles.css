@@ -405,7 +405,33 @@ body {
   border-radius: 6px;
 }
 
-/* Responsivitat (opcional però recomanada) */
+/*About*/
+
+
+
+    .content {
+      max-width: 1700px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.95em;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .content h1 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    .content span {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+
+/* Responsivitat */
 @media (max-width: 600px) {
   .catalogue {
     grid-template-columns: 1fr; /* una columna per targeta */
