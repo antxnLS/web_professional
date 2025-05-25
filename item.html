@@ -47,6 +47,27 @@
         <p><strong>Joc:</strong> ${itemTrobat.joc}</p>
         <a href="game.html?id=${itemTrobat.JocId}" class="button">Veure joc</a>
       `;
+
+      // Afegir JSON-LD dinàmicament
+      const jsonLd = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": itemTrobat.nom,
+        "image": itemTrobat.imatge,
+        "description": `Categoria: ${itemTrobat.categoria}. Joc: ${itemTrobat.joc}.`,
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "EUR",
+          "price": itemTrobat.preu.toString(),
+          "availability": "https://schema.org/InStock"
+        }
+      };
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(jsonLd);
+      document.body.appendChild(script);
+
     } else {
       container.innerHTML = `<p>Ítem no trobat.</p>`;
     }

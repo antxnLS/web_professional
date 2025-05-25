@@ -31,10 +31,8 @@
   <h2>El millor</h2>
   <div class="catalogue" id="el-millor"></div>
 
-  <!-- 🔄 Inclou les dades -->
   <script src="vorhees.js"></script>
 
-  <!-- 🧠 Script funcional: carrusel + productes -->
   <script>
     // Carrousel
     let index = 0;
@@ -83,5 +81,15 @@
     renderitzarItems("mes-venut", venuts);
     renderitzarItems("el-millor", millors);
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "InGameShop",
+    "url": "https://antxnls.github.io/web_professional/"
+  }
+  </script>
+
 </body>
 </html>

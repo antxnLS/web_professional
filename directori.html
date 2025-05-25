@@ -1,35 +1,74 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="styles.css">
-    <title>Directori</title>
-    <ul class="navbar">
-      <li> <img src="img/logo.png" height="100" width="100"> </li>
-    <li><a href="index.html">Home</a></li> <!--Benvinguda, destacats, promocions-->
-    <li><a class="active" href="directori.html">Directori</a></li> <!--Llista de tots els productes amb busqueda-->
-    <li><a href="about.html">About</a></li> <!--About us!-->
-    <li><a href="contact.html">Contact</a></li> <!--Contacta amb nosaltres-->
-  </ul>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css" />
+  <title>Directori</title>
 </head>
 
 <body>
+  <ul class="navbar">
+    <li><img src="img/logo.png" height="100" width="100" /></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a class="active" href="directori.html">Directori</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
   <h1>Jocs</h1>
   <div class="catalogue" id="catalogue"></div>
-<script src="vorhees.js"></script>
-<script>
-  const catalogueEl = document.getElementById("catalogue");
 
-  vorheesData.forEach(game => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${game.imatge}" alt="${game.titol}" class="product-img">
-      <div class="title">${game.titol}</div>
-      <div class="items">${game.items}</div>
-      <div class="description">${game.descripcio || 'No description available.'}</div>
-      <a href="game.html?id=${game.id}" class="button">Veure Items</a>
-    `;
-    catalogueEl.appendChild(card);
-  });
-</script>
+  <script src="vorhees.js"></script>
+  <script>
+    const catalogueEl = document.getElementById("catalogue");
+
+    vorheesData.forEach(game => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${game.imatge}" alt="${game.titol}" class="product-img" />
+        <div class="title">${game.titol}</div>
+        <div class="items">${game.items || ''}</div>
+        <div class="description">${game.descripcio || 'No description available.'}</div>
+        <a href="game.html?id=${game.id}" class="button">Veure Items</a>
+      `;
+      catalogueEl.appendChild(card);
+    });
+
+    // Construir JSON-LD dinàmicament a partir de vorheesData
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Directori de Jocs",
+      "itemListElement": vorheesData.map(game => ({
+        "@type": "Product",
+        "name": game.titol,
+        "description": game.descripcio || 'No description available.',
+        "image": game.imatge,
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock"
+        },
+        "hasVariant": (game.productes || []).map(item => ({
+          "@type": "Product",
+          "name": item.nom,
+          "category": item.categoria,
+          "image": item.imatge,
+          "offers": {
+            "@type": "Offer",
+            "price": item.preu.toString(),
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        }))
+      }))
+    };
+
+    // Insertar JSON-LD en el DOM
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(jsonLd, null, 2);
+    document.head.appendChild(script);
+  </script>
 </body>
 </html>
