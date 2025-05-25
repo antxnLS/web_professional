@@ -66,10 +66,39 @@
           section.appendChild(carousel);
           categoriesContainer.appendChild(section);
         }
-
       } else {
         categoriesContainer.innerHTML = "<p style='text-align:center;'>Aquest joc no té ítems disponibles.</p>";
       }
+
+      // Crear JSON-LD dinàmic per al joc i els seus ítems
+      const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": game.titol,
+        "description": game.descripcio,
+        "image": game.imatge,
+        "url": window.location.href,
+        "gamePlatform": "PC",
+        "hasPart": game.productes ? game.productes.map(item => ({
+          "@type": "Product",
+          "name": item.nom,
+          "image": item.imatge,
+          "category": item.categoria,
+          "offers": {
+            "@type": "Offer",
+            "price": item.preu,
+            "priceCurrency": "EUR",
+            "url": `item.html?item=${encodeURIComponent(item.nom)}`
+          }
+        })) : []
+      };
+
+      // Afegir el JSON-LD al document
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.text = JSON.stringify(jsonLd);
+      document.head.appendChild(script);
+
     } else {
       infoEl.innerHTML = `<p>No s'ha trobat cap joc amb aquest ID.</p>`;
     }
