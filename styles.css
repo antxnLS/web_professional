@@ -106,7 +106,7 @@ h1 {
 }
 
 .description {
-  font-size: 0.4rem;
+  font-size: 0.8rem;
   color: #555;
   margin: 10px 0;
   flex-grow: 1;
@@ -409,26 +409,27 @@ body {
 
 
 
-    .content {
-      max-width: 1700px;
-      margin: 50px auto;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.95em;
-      color: #333;
-      line-height: 1.8;
-    }
+.about-page .content {
+  max-width: 1700px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.95em;
+  color: #333;
+  line-height: 1.8;
+}
 
-    .content h1 {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-    }
+.about-page .content h1 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
 
-    .content span {
-      display: block;
-      margin-top: 20px;
-      font-weight: bold;
-    }
+.about-page .content span {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
 
 
 /* Responsivitat */
