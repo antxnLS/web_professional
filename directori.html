@@ -1,250 +1,74 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="styles.css">
-    <title>Directori</title>
-    <ul class="navbar">
-      <li> <img src="img/logo.png" height="100" width="100"> </li>
-    <li><a href="index.html">Home</a></li> <!--Benvinguda, destacats, promocions-->
-    <li><a class="active" href="directori.html">Directori</a></li> <!--Llista de tots els productes amb busqueda-->
-    <li><a href="about.html">About</a></li> <!--About us!-->
-    <li><a href="contact.html">Contact</a></li> <!--Contacta amb nosaltres-->
-  </ul>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css" />
+  <title>Directori</title>
 </head>
 
 <body>
+  <ul class="navbar">
+    <li><img src="img/logo.png" height="100" width="100" /></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a class="active" href="directori.html">Directori</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
   <h1>Jocs</h1>
   <div class="catalogue" id="catalogue"></div>
-<script src="vorhees.js"></script>
-<script>
-  const catalogueEl = document.getElementById("catalogue");
 
-  vorheesData.forEach(game => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${game.imatge}" alt="${game.titol}" class="product-img">
-      <div class="title">${game.titol}</div>
-      <div class="items">${game.items}</div>
-      <div class="description">${game.descripcio || 'No description available.'}</div>
-      <a href="game.html?id=${game.id}" class="button">Veure Items</a>
-    `;
-    catalogueEl.appendChild(card);
-  });
-</script>
+  <script src="vorhees.js"></script>
+  <script>
+    const catalogueEl = document.getElementById("catalogue");
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Directori de Jocs",
-  "itemListElement": [
-    {
-      "@type": "Product",
-      "name": "Elden Ring",
-      "description": "Explora un món fosc i èpic ple de perills, màgia i combat exigent en aquest RPG d'acció de FromSoftware.",
-      "image": "img/imatges jocs/eldenring.jpg",
-      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
-      "hasVariant": [
-        {
+    vorheesData.forEach(game => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${game.imatge}" alt="${game.titol}" class="product-img" />
+        <div class="title">${game.titol}</div>
+        <div class="items">${game.items || ''}</div>
+        <div class="description">${game.descripcio || 'No description available.'}</div>
+        <a href="game.html?id=${game.id}" class="button">Veure Items</a>
+      `;
+      catalogueEl.appendChild(card);
+    });
+
+    // Construir JSON-LD dinàmicament a partir de vorheesData
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Directori de Jocs",
+      "itemListElement": vorheesData.map(game => ({
+        "@type": "Product",
+        "name": game.titol,
+        "description": game.descripcio || 'No description available.',
+        "image": game.imatge,
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock"
+        },
+        "hasVariant": (game.productes || []).map(item => ({
           "@type": "Product",
-          "name": "Espasa de la Llum (sword of light)",
-          "category": "Armes",
-          "image": "img/items/eldenring/swordoflight.jpg",
+          "name": item.nom,
+          "category": item.categoria,
+          "image": item.imatge,
           "offers": {
             "@type": "Offer",
-            "price": "1200",
+            "price": item.preu.toString(),
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock"
           }
-        },
-        {
-          "@type": "Product",
-          "name": "Dits estimats (cherishing fingers)",
-          "category": "Ecanteris",
-          "image": "img/items/eldenring/cherishingfingers.jpg",
-          "offers": {
-            "@type": "Offer",
-            "price": "800",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock"
-          }
-        },
-        {
-          "@type": "Product",
-          "name": "Màscara d'Albinàuric (albinauric mask)",
-          "category": "Armadures",
-          "image": "img/items/eldenring/albinauricmask.jpg",
-          "offers": {
-            "@type": "Offer",
-            "price": "650",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock"
-          }
-        },
-        {
-          "@type": "Product",
-          "name": "Seppuku (Seppuku)",
-          "category": "Cendres de guerra",
-          "image": "img/items/eldenring/seppuku.jpg",
-          "offers": {
-            "@type": "Offer",
-            "price": "900",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Product",
-      "name": "Team Fortress 2",
-      "description": "Un clàssic multijugador ple d'humor, acció i una gran varietat d'objectes cosmètics i armes úniques.",
-      "image": "img/imatges jocs/teamfortress.png",
-      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
-      "hasVariant": [
-        {
-          "@type": "Product",
-          "name": "Llet boja (Mad milk)",
-          "category": "Consumible",
-          "image": "img/items/tf2/madmilk.jpg",
-          "offers": { "@type": "Offer", "price": "200", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Les botes d'Ali Baba (Ali Baba's wee booties)",
-          "category": "Cosmètics",
-          "image": "img/items/tf2/alibababoots.jpg",
-          "offers": { "@type": "Offer", "price": "450", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Sobredosi (Overdose)",
-          "category": "Armes",
-          "image": "img/items/tf2/overdose.jpg",
-          "offers": { "@type": "Offer", "price": "300", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Terroràntula pintada (Painted Terror-antula)",
-          "category": "Cosmètics",
-          "image": "img/items/tf2/terrorantula.jpg",
-          "offers": { "@type": "Offer", "price": "750", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        }
-      ]
-    },
-    {
-      "@type": "Product",
-      "name": "Dota2",
-      "description": "El MOBA competitiu per excel·lència amb herois llegendaris, estratègia profunda i objectes poderosos.",
-      "image": "img/imatges jocs/dota2.jpg",
-      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
-      "hasVariant": [
-        {
-          "@type": "Product",
-          "name": "Fulla astuta (Swift Blink)",
-          "category": "Arma",
-          "image": "img/items/dota2/swiftblink.jpg",
-          "offers": { "@type": "Offer", "price": "1300", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Vel de discòrdia (Veil of Discord)",
-          "category": "Armadura",
-          "image": "img/items/dota2/veilofdiscord.jpg",
-          "offers": { "@type": "Offer", "price": "950", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Botes Arcanes (Arcane Boots)",
-          "category": "Armadura",
-          "image": "img/items/dota2/arcaneboots.jpg",
-          "offers": { "@type": "Offer", "price": "400", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Fragment de lluna (Moon Shard)",
-          "category": "Artefactes",
-          "image": "img/items/dota2/moonshard.jpg",
-          "offers": { "@type": "Offer", "price": "700", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        }
-      ]
-    },
-    {
-      "@type": "Product",
-      "name": "RuneScape",
-      "description": "Un MMORPG llegendari amb un món immens, milers d’ítems i llibertat total per crear la teva pròpia aventura.",
-      "image": "img/imatges jocs/runescape.jpg",
-      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
-      "hasVariant": [
-        {
-          "@type": "Product",
-          "name": "Cimitarra rúnica (Rune scimitar)",
-          "category": "Armes",
-          "image": "img/items/runescape/runescimitar.jpg",
-          "offers": { "@type": "Offer", "price": "150", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Última voluntat i testament (Last will and testament)",
-          "category": "Miscelànea",
-          "image": "img/items/runescape/lastwill.jpg",
-          "offers": { "@type": "Offer", "price": "90", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Caputxa del segador (Grim reaper hood)",
-          "category": "Miscelànea",
-          "image": "img/items/runescape/grimreaperhood.jpg",
-          "offers": { "@type": "Offer", "price": "300", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Carta d'amor (Love Letter)",
-          "category": "Miscelànea",
-          "image": "img/items/runescape/loveletter.jpg",
-          "offers": { "@type": "Offer", "price": "50", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        }
-      ]
-    },
-    {
-      "@type": "Product",
-      "name": "Diablo 4",
-      "description": "Destrueix dimonis i col·lecciona botí llegendari en un món fosc i visceral d'acció i rol.",
-      "image": "img/imatges jocs/d4.jpg",
-      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
-      "hasVariant": [
-        {
-          "@type": "Product",
-          "name": "Cresta d'Arlequí (Harlequin crest)",
-          "category": "Mythic Unique",
-          "image": "img/items/diablo4/harlequincrest.jpg",
-          "offers": { "@type": "Offer", "price": "3200", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "El poder de Tyrael (Tyrael's Mighty)",
-          "category": "Mythic Unique",
-          "image": "img/items/diablo4/tyraelmight.jpg",
-          "offers": { "@type": "Offer", "price": "2900", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "El bec de mort (Death beak)",
-          "category": "Mythic Unique",
-          "image": "img/items/diablo4/deathbeak.jpg",
-          "offers": { "@type": "Offer", "price": "2700", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "Product",
-          "name": "Parella ardent (Blazing pair)",
-          "category": "Mythic Unique",
-          "image": "img/items/diablo4/blazingpair.jpg",
-          "offers": { "@type": "Offer", "price": "3000", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
-        }
-      ]
-    }
-  ]
-}
-</script>
+        }))
+      }))
+    };
+
+    // Insertar JSON-LD en el DOM
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(jsonLd, null, 2);
+    document.head.appendChild(script);
+  </script>
 </body>
 </html>
